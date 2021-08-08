@@ -8,10 +8,15 @@
             <Setter Property="FontSize" Value="9"/>
         </Style>
 
+        <Style x:Key="cellNumerica" TargetType="Label" BasedOn="{StaticResource cellString}">
+            <Setter Property="HorizontalTextAlignment" Value="End"/>
+        </Style>
+
         <Style x:Key="rowGrid" TargetType="Grid">
-            <Setter Property="ColumnDefinitions" Value="2*,*,*,*,*,*,*,*,*,*,*,*,*,*,*"/>
+            <Setter Property="ColumnDefinitions" Value="2*,*,*,*,50,60,*,*,*,*,*,*,*,*,*"/>
             <Setter Property="Margin" Value="1"/>
             <Setter Property="Padding" Value="5"/>
+            <Setter Property="ColumnSpacing" Value="2"/>
         </Style>
     </ContentPage.Resources>
     
@@ -21,10 +26,18 @@
                 <Label Text="Histórico" VerticalTextAlignment="Center" FontSize="Small"/>
             </StackLayout>
 
-            <StackLayout Orientation="Horizontal" Grid.Row="1" BackgroundColor="#293241" Padding="15,0">
+            <Grid ColumnDefinitions="auto,*,auto,auto" Grid.Row="1" Padding="15,0" BackgroundColor="#293241">
+                <Label Text="{StaticResource chevron-down}" VerticalTextAlignment="Center" FontSize="13" FontFamily="FontAwesomeSolid" Grid.Column="0"/>
+                <Label Text="ORDENS EM ABERTO" VerticalTextAlignment="Center" FontSize="13" Grid.Column="1"/>
+
+                <Label Text="{Binding QuantidadeTotal, StringFormat='TOTAL QUANTIDADE: {0}'}" Grid.Column="2" VerticalTextAlignment="Center" FontSize="10" />
+                <Label Text="{Binding QuantidadeDisponivelTotal, StringFormat='TOTAL DISPONIVEL: {0}'}" Grid.Column="3" VerticalTextAlignment="Center" FontSize="10" Margin="5,0"/>
+            </Grid>
+            
+            <!--<StackLayout Orientation="Horizontal" Grid.Row="1" BackgroundColor="#293241" Padding="15,0">
                 <Label Text="{StaticResource chevron-down}" VerticalTextAlignment="Center" FontSize="13" FontFamily="FontAwesomeSolid"/>
                 <Label Text="ORDENS EM ABERTO" VerticalTextAlignment="Center" FontSize="13"/>
-            </StackLayout>
+            </StackLayout>-->
 
             <ListView Grid.Row="2" ItemsSource="{Binding Ordens}">
                 <ListView.Header>
@@ -56,16 +69,16 @@
                                 <Label Text="{Binding Conta}" Grid.Column="2" Style="{StaticResource cellString}"/>
                                 <Label Text="{Binding Ativo}" Grid.Column="3" Style="{StaticResource cellString}"/>
                                 <Label Text="{Binding Tipo, Converter={StaticResource cellTipoConverter}}" Grid.Column="4" Style="{StaticResource cellString}"/>
-                                <Label Text="{Binding Quantidade}" Grid.Column="5" Style="{StaticResource cellString}"/>
-                                <Label Text="{Binding QuantidadeAparente, Converter={StaticResource cellNumericaConverter}}" Grid.Column="6" Style="{StaticResource cellString}"/>
-                                <Label Text="{Binding QuantidadeDisponivel, Converter={StaticResource cellNumericaConverter}}" Grid.Column="7" Style="{StaticResource cellString}"/>
-                                <Label Text="{Binding QuantidadeCancelada, Converter={StaticResource cellNumericaConverter}}" Grid.Column="8" Style="{StaticResource cellString}"/>
-                                <Label Text="{Binding QuantidadeExecutada, Converter={StaticResource cellNumericaConverter}}" Grid.Column="9" Style="{StaticResource cellString}"/>
-                                <Label Text="{Binding Valor, StringFormat='{0:F2}'}" Grid.Column="10" Style="{StaticResource cellString}"/>
-                                <Label Text="{Binding ValorDisparo, StringFormat='{0:F2}'}" Grid.Column="11" Style="{StaticResource cellString}"/>
-                                <Label Text="{Binding Objetivo, StringFormat='{0:F2}'}" Grid.Column="12" Style="{StaticResource cellString}"/>
-                                <Label Text="{Binding ObjetivoDisparo, StringFormat='{0:F2}'}" Grid.Column="13" Style="{StaticResource cellString}"/>
-                                <Label Text="{Binding Reducao, Converter={StaticResource cellPercentualConverter}}" Grid.Column="14" Style="{StaticResource cellString}"/>
+                                <Label Text="{Binding Quantidade}" Grid.Column="5" Style="{StaticResource cellNumerica}"/>
+                                <Label Text="{Binding QuantidadeAparente, Converter={StaticResource cellNumericaConverter}}" Grid.Column="6" Style="{StaticResource cellNumerica}"/>
+                                <Label Text="{Binding QuantidadeDisponivel, Converter={StaticResource cellNumericaConverter}}" Grid.Column="7" Style="{StaticResource cellNumerica}"/>
+                                <Label Text="{Binding QuantidadeCancelada, Converter={StaticResource cellNumericaConverter}}" Grid.Column="8" Style="{StaticResource cellNumerica}"/>
+                                <Label Text="{Binding QuantidadeExecutada, Converter={StaticResource cellNumericaConverter}}" Grid.Column="9" Style="{StaticResource cellNumerica}"/>
+                                <Label Text="{Binding Valor, StringFormat='{0:F2}'}" Grid.Column="10" Style="{StaticResource cellNumerica}"/>
+                                <Label Text="{Binding ValorDisparo, StringFormat='{0:F2}'}" Grid.Column="11" Style="{StaticResource cellNumerica}"/>
+                                <Label Text="{Binding Objetivo, StringFormat='{0:F2}'}" Grid.Column="12" Style="{StaticResource cellNumerica}"/>
+                                <Label Text="{Binding ObjetivoDisparo, StringFormat='{0:F2}'}" Grid.Column="13" Style="{StaticResource cellNumerica}"/>
+                                <Label Text="{Binding Reducao, Converter={StaticResource cellPercentualConverter}}" Grid.Column="14" Style="{StaticResource cellNumerica}"/>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
