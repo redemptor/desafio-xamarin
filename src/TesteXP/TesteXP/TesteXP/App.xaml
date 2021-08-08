@@ -4,5 +4,9 @@
              x:Class="TesteXP.App">
     <Application.Resources>
 
+        <!-- Font Icon-->
+        <x:String x:Key="chevron-down">&#xf078;</x:String>
+        <x:String x:Key="arrow-down">&#xf063;</x:String>
+        
     </Application.Resources>
 </Application>
