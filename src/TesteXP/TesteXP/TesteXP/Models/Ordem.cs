@@ -12,13 +12,13 @@ namespace TesteXP.Models
         public EnumTipo Tipo { get; set; }
         public uint Quantidade { get; set; }
         public uint QuantidadeAparente { get; set; }
-        public uint QuantidadeDisparo { get; set; }
+        public uint QuantidadeDisponivel { get; set; }
         public uint QuantidadeCancelada { get; set; }
         public uint QuantidadeExecutada { get; set; }
         public decimal Valor { get; set; }
         public decimal ValorDisparo { get; set; }
         public decimal Objetivo { get; set; }
-        public decimal ObjetivoDisponivel { get; set; }
+        public decimal ObjetivoDisparo { get; set; }
         public float Reducao { get; set; }
     }
 }

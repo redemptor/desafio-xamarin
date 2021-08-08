@@ -4,11 +4,11 @@ using Xamarin.Forms;
 
 namespace TesteXP.Converters
 {
-    public class CellZeroConverter : IValueConverter
+    public class CellNumericaConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return (value is int valor && valor == 0)
+            return (double.TryParse(value.ToString(), out double valor) && valor == 0)
                 ? "-"
                 : value;
         }

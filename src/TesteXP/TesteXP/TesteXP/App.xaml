@@ -1,12 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:TesteXP.Converters"
              x:Class="TesteXP.App">
     <Application.Resources>
 
+        <!--Converters-->
+        <converters:CellNumericaConverter x:Key="cellNumericaConverter"/>
+        <converters:CellPercentualConverter x:Key="cellPercentualConverter"/>
+        <converters:CellTipoConverter x:Key="cellTipoConverter"/>
+
+
         <!-- Font Icon-->
-        <x:String x:Key="chevron-down">&#xf078;</x:String>
-        <x:String x:Key="arrow-down">&#xf063;</x:String>
-        
+            <x:String x:Key="chevron-down">&#xf078;</x:String>
+            <x:String x:Key="arrow-down">&#xf063;</x:String>
+
+
     </Application.Resources>
 </Application>

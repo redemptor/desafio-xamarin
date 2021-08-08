@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using TesteXP.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -16,6 +17,9 @@ namespace TesteXP
 
         protected override void OnStart()
         {
+            CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator = ",";
+            CultureInfo.CurrentUICulture.DateTimeFormat.ShortDatePattern = "dd/MM/yyyy";
+            CultureInfo.CurrentUICulture.DateTimeFormat.LongTimePattern = "H:mm:ss";
         }
 
         protected override void OnSleep()

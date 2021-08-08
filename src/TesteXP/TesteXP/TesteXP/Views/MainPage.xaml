@@ -3,6 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TesteXP.Views.MainPage"
              BackgroundColor="#1A202E" NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <Style x:Key="cellString" TargetType="Label">
+            <Setter Property="FontSize" Value="9"/>
+        </Style>
+
+        <Style x:Key="rowGrid" TargetType="Grid">
+            <Setter Property="ColumnDefinitions" Value="2*,*,*,*,*,*,*,*,*,*,*,*,*,*,*"/>
+            <Setter Property="Margin" Value="1"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
         <Grid RowDefinitions="40,35,*" RowSpacing="1">
             <StackLayout Orientation="Horizontal" Grid.Row="0" BackgroundColor="#293241" Padding="15,0">
@@ -16,44 +28,44 @@
 
             <ListView Grid.Row="2" ItemsSource="{Binding Ordens}">
                 <ListView.Header>
-                    <Grid ColumnDefinitions="2*,*,*,*,*,*,*,*,*,*,*,*,*,*,*" BackgroundColor="#1A2030" Margin="0" Padding="5">
-                        <Label Text="DATA E HORA" FontSize="9" Grid.Column="0"/>
-                        <Label Text="ASSESSOR" FontSize="9" Grid.Column="1"/>
-                        <Label Text="CONTA" FontSize="9" Grid.Column="2"/>
-                        <Label Text="ATIVO" FontSize="9" Grid.Column="3"/>
-                        <Label Text="TIPO" FontSize="9" Grid.Column="4"/>
-                        <Label Text="QTD" FontSize="9" Grid.Column="5"/>
-                        <Label Text="QTD. APARENTE" FontSize="9" Grid.Column="6"/>
-                        <Label Text="QTD.DISP" FontSize="9" Grid.Column="7"/>
-                        <Label Text="QTD. CANCEL" FontSize="9" Grid.Column="8"/>
-                        <Label Text="QTD. EXEC" FontSize="9" Grid.Column="9"/>
-                        <Label Text="VALOR" FontSize="9" Grid.Column="10"/>
-                        <Label Text="VALOR DISP" FontSize="9" Grid.Column="11"/>
-                        <Label Text="OBJETIVO" FontSize="9" Grid.Column="12"/>
-                        <Label Text="OBJ.DISP" FontSize="9" Grid.Column="13"/>
-                        <Label Text="REDUÇÃO" FontSize="9" Grid.Column="14"/>
+                    <Grid BackgroundColor="#1A2030" Style="{StaticResource rowGrid}">
+                        <Label Text="DATA E HORA" Grid.Column="0" Style="{StaticResource cellString}"/>
+                        <Label Text="ASSESSOR" Grid.Column="1" Style="{StaticResource cellString}"/>
+                        <Label Text="CONTA" Grid.Column="2" Style="{StaticResource cellString}"/>
+                        <Label Text="ATIVO" Grid.Column="3" Style="{StaticResource cellString}"/>
+                        <Label Text="TIPO" Grid.Column="4" Style="{StaticResource cellString}"/>
+                        <Label Text="QTD" Grid.Column="5" Style="{StaticResource cellString}"/>
+                        <Label Text="QTD. APARENTE" Grid.Column="6" Style="{StaticResource cellString}"/>
+                        <Label Text="QTD.DISP" Grid.Column="7" Style="{StaticResource cellString}"/>
+                        <Label Text="QTD. CANCEL" Grid.Column="8" Style="{StaticResource cellString}"/>
+                        <Label Text="QTD. EXEC" Grid.Column="9" Style="{StaticResource cellString}"/>
+                        <Label Text="VALOR" Grid.Column="10" Style="{StaticResource cellString}"/>
+                        <Label Text="VALOR DISP" Grid.Column="11" Style="{StaticResource cellString}"/>
+                        <Label Text="OBJETIVO" Grid.Column="12" Style="{StaticResource cellString}"/>
+                        <Label Text="OBJ.DISP" Grid.Column="13" Style="{StaticResource cellString}"/>
+                        <Label Text="REDUÇÃO" Grid.Column="14" Style="{StaticResource cellString}"/>
                     </Grid>
                 </ListView.Header>
 
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid ColumnDefinitions="2*,*,*,*,*,*,*,*,*,*,*,*,*,*,*" BackgroundColor="#232939" Margin="0" Padding="5">
-                                <Label Text="{Binding DataHora}" FontSize="9" Grid.Column="0"/>
-                                <Label Text="{Binding Assessor}" FontSize="9" Grid.Column="1"/>
-                                <Label Text="{Binding Conta}" FontSize="9" Grid.Column="2"/>
-                                <Label Text="{Binding Ativo}" FontSize="9" Grid.Column="3"/>
-                                <Label Text="{Binding Tipo}" FontSize="9" Grid.Column="4"/>
-                                <Label Text="{Binding Quantidade}" FontSize="9" Grid.Column="5"/>
-                                <Label Text="{Binding QuantidadeAparente}" FontSize="9" Grid.Column="6"/>
-                                <Label Text="{Binding QuantidadeDisparo}" FontSize="9" Grid.Column="7"/>
-                                <Label Text="{Binding QuantidadeCancelada}" FontSize="9" Grid.Column="8"/>
-                                <Label Text="{Binding QuantidadeExecutada}" FontSize="9" Grid.Column="9"/>
-                                <Label Text="{Binding Valor}" FontSize="9" Grid.Column="10"/>
-                                <Label Text="{Binding ValorDisparo}" FontSize="9" Grid.Column="11"/>
-                                <Label Text="{Binding Objetivo}" FontSize="9" Grid.Column="12"/>
-                                <Label Text="{Binding ObjetivoDisponivel}" FontSize="9" Grid.Column="13"/>
-                                <Label Text="{Binding Reducao}" FontSize="9" Grid.Column="14"/>
+                            <Grid BackgroundColor="#232939" Style="{StaticResource rowGrid}">
+                                <Label Text="{Binding DataHora}" Grid.Column="0" Style="{StaticResource cellString}"/>
+                                <Label Text="{Binding Assessor}" Grid.Column="1" Style="{StaticResource cellString}"/>
+                                <Label Text="{Binding Conta}" Grid.Column="2" Style="{StaticResource cellString}"/>
+                                <Label Text="{Binding Ativo}" Grid.Column="3" Style="{StaticResource cellString}"/>
+                                <Label Text="{Binding Tipo, Converter={StaticResource cellTipoConverter}}" Grid.Column="4" Style="{StaticResource cellString}"/>
+                                <Label Text="{Binding Quantidade}" Grid.Column="5" Style="{StaticResource cellString}"/>
+                                <Label Text="{Binding QuantidadeAparente, Converter={StaticResource cellNumericaConverter}}" Grid.Column="6" Style="{StaticResource cellString}"/>
+                                <Label Text="{Binding QuantidadeDisponivel, Converter={StaticResource cellNumericaConverter}}" Grid.Column="7" Style="{StaticResource cellString}"/>
+                                <Label Text="{Binding QuantidadeCancelada, Converter={StaticResource cellNumericaConverter}}" Grid.Column="8" Style="{StaticResource cellString}"/>
+                                <Label Text="{Binding QuantidadeExecutada, Converter={StaticResource cellNumericaConverter}}" Grid.Column="9" Style="{StaticResource cellString}"/>
+                                <Label Text="{Binding Valor, StringFormat='{0:F2}'}" Grid.Column="10" Style="{StaticResource cellString}"/>
+                                <Label Text="{Binding ValorDisparo, StringFormat='{0:F2}'}" Grid.Column="11" Style="{StaticResource cellString}"/>
+                                <Label Text="{Binding Objetivo, StringFormat='{0:F2}'}" Grid.Column="12" Style="{StaticResource cellString}"/>
+                                <Label Text="{Binding ObjetivoDisparo, StringFormat='{0:F2}'}" Grid.Column="13" Style="{StaticResource cellString}"/>
+                                <Label Text="{Binding Reducao, Converter={StaticResource cellPercentualConverter}}" Grid.Column="14" Style="{StaticResource cellString}"/>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
