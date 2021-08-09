@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using TesteXP.Services;
 using TesteXP.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -12,6 +13,7 @@ namespace TesteXP
         {
             InitializeComponent();
 
+            DependencyService.Register<MockServicoDeHistorico>();
             MainPage = new MainPage();
         }
 

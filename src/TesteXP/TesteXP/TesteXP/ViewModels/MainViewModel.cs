@@ -4,12 +4,15 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using TesteXP.Models;
+using TesteXP.Services;
 using Xamarin.Forms;
 
 namespace TesteXP.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
+        private IServicoDeHistorico ServicoDeHistorico => DependencyService.Get<IServicoDeHistorico>();
+
         private ObservableCollection<Ordem> _ordens;
         public ObservableCollection<Ordem> Ordens
         {
@@ -17,15 +20,15 @@ namespace TesteXP.ViewModels
             set => SetProperty(ref _ordens, value);
         }
 
-        private uint _quantidadeTotal;
-        public uint QuantidadeTotal
+        private long _quantidadeTotal;
+        public long QuantidadeTotal
         {
             get => _quantidadeTotal;
             set => SetProperty(ref _quantidadeTotal, value);
         }
 
-        private uint _quantidadeDisponivel;
-        public uint QuantidadeDisponivelTotal
+        private long _quantidadeDisponivel;
+        public long QuantidadeDisponivelTotal
         {
             get => _quantidadeDisponivel;
             set => SetProperty(ref _quantidadeDisponivel, value);
@@ -43,24 +46,16 @@ namespace TesteXP.ViewModels
         uint _count;
         private bool AtualizarOrdens()
         {
-            var rnd = new Random();
-            var quantidade = (uint)rnd.Next(5);
-            var quantidadeDisponivel = quantidade - (uint)rnd.Next((int)quantidade);
+            var retornoOrdens = ServicoDeHistorico.ObterOrdens();
 
-            _count++;
-            var ordem = new Ordem
+            // TODO: melhorar esse ponto para evitar multiplas notificações para a view
+            foreach (var ordem in retornoOrdens)
             {
-                DataHora = DateTime.Now,
-                Conta = 1000 + _count,
-                Ativo = $"ativo {_count}",
-                Quantidade = quantidade,
-                QuantidadeDisponivel = quantidadeDisponivel
-            };
+                Ordens.Insert(0, ordem);
+            }
 
-            Ordens.Insert(0, ordem);
-
-            QuantidadeTotal = (uint)Ordens.Sum(x => x.Quantidade);
-            QuantidadeDisponivelTotal = (uint)Ordens.Sum(x => x.QuantidadeDisponivel);
+            QuantidadeTotal = Ordens.Sum(x => x.Quantidade);
+            QuantidadeDisponivelTotal = Ordens.Sum(x => x.QuantidadeDisponivel);
 
             return true;
         }
