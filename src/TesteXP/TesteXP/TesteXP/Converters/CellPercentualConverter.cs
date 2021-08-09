@@ -8,8 +8,8 @@ namespace TesteXP.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return value is float valor && valor > 0
-                ? $"{valor * 100}%"
+            return value is double valor && valor > 0
+                ? $"{Math.Round(valor * 100, 0)}%"
                 : "-";
         }
 
