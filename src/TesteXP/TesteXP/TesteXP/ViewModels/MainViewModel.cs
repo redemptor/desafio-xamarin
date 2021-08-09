@@ -38,7 +38,7 @@ namespace TesteXP.ViewModels
             IniciarTimer();
         }
 
-        private void IniciarTimer() => Device.StartTimer(TimeSpan.FromMilliseconds(1000), AtualizarOrdens);
+        private void IniciarTimer() => Device.StartTimer(TimeSpan.FromMilliseconds(100), AtualizarOrdens);
 
         uint _count;
         private bool AtualizarOrdens()
@@ -51,13 +51,13 @@ namespace TesteXP.ViewModels
             var ordem = new Ordem
             {
                 DataHora = DateTime.Now,
-                Conta = 100 + _count,
+                Conta = 1000 + _count,
                 Ativo = $"ativo {_count}",
                 Quantidade = quantidade,
                 QuantidadeDisponivel = quantidadeDisponivel
             };
 
-            Ordens.Add(ordem);
+            Ordens.Insert(0, ordem);
 
             QuantidadeTotal = (uint)Ordens.Sum(x => x.Quantidade);
             QuantidadeDisponivelTotal = (uint)Ordens.Sum(x => x.QuantidadeDisponivel);

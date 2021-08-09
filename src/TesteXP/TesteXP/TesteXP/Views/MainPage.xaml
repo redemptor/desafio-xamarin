@@ -13,7 +13,7 @@
         </Style>
 
         <Style x:Key="rowGrid" TargetType="Grid">
-            <Setter Property="ColumnDefinitions" Value="2*,*,*,*,50,60,*,*,*,*,*,*,*,*,*"/>
+            <Setter Property="ColumnDefinitions" Value="2*,*,*,*,40,*,*,*,*,*,*,*,*,*,*"/>
             <Setter Property="Margin" Value="1"/>
             <Setter Property="Padding" Value="5"/>
             <Setter Property="ColumnSpacing" Value="2"/>
@@ -33,11 +33,6 @@
                 <Label Text="{Binding QuantidadeTotal, StringFormat='TOTAL QUANTIDADE: {0}'}" Grid.Column="2" VerticalTextAlignment="Center" FontSize="10" />
                 <Label Text="{Binding QuantidadeDisponivelTotal, StringFormat='TOTAL DISPONIVEL: {0}'}" Grid.Column="3" VerticalTextAlignment="Center" FontSize="10" Margin="5,0"/>
             </Grid>
-            
-            <!--<StackLayout Orientation="Horizontal" Grid.Row="1" BackgroundColor="#293241" Padding="15,0">
-                <Label Text="{StaticResource chevron-down}" VerticalTextAlignment="Center" FontSize="13" FontFamily="FontAwesomeSolid"/>
-                <Label Text="ORDENS EM ABERTO" VerticalTextAlignment="Center" FontSize="13"/>
-            </StackLayout>-->
 
             <ListView Grid.Row="2" ItemsSource="{Binding Ordens}">
                 <ListView.Header>
@@ -47,16 +42,16 @@
                         <Label Text="CONTA" Grid.Column="2" Style="{StaticResource cellString}"/>
                         <Label Text="ATIVO" Grid.Column="3" Style="{StaticResource cellString}"/>
                         <Label Text="TIPO" Grid.Column="4" Style="{StaticResource cellString}"/>
-                        <Label Text="QTD" Grid.Column="5" Style="{StaticResource cellString}"/>
-                        <Label Text="QTD. APARENTE" Grid.Column="6" Style="{StaticResource cellString}"/>
-                        <Label Text="QTD.DISP" Grid.Column="7" Style="{StaticResource cellString}"/>
-                        <Label Text="QTD. CANCEL" Grid.Column="8" Style="{StaticResource cellString}"/>
-                        <Label Text="QTD. EXEC" Grid.Column="9" Style="{StaticResource cellString}"/>
-                        <Label Text="VALOR" Grid.Column="10" Style="{StaticResource cellString}"/>
-                        <Label Text="VALOR DISP" Grid.Column="11" Style="{StaticResource cellString}"/>
-                        <Label Text="OBJETIVO" Grid.Column="12" Style="{StaticResource cellString}"/>
-                        <Label Text="OBJ.DISP" Grid.Column="13" Style="{StaticResource cellString}"/>
-                        <Label Text="REDUÇÃO" Grid.Column="14" Style="{StaticResource cellString}"/>
+                        <Label Text="QTD" Grid.Column="5" Style="{StaticResource cellNumerica}"/>
+                        <Label Text="QTD. APARENTE" Grid.Column="6" Style="{StaticResource cellNumerica}"/>
+                        <Label Text="QTD.DISP" Grid.Column="7" Style="{StaticResource cellNumerica}"/>
+                        <Label Text="QTD. CANCEL" Grid.Column="8" Style="{StaticResource cellNumerica}"/>
+                        <Label Text="QTD. EXEC" Grid.Column="9" Style="{StaticResource cellNumerica}"/>
+                        <Label Text="VALOR" Grid.Column="10" Style="{StaticResource cellNumerica}"/>
+                        <Label Text="VALOR DISP" Grid.Column="11" Style="{StaticResource cellNumerica}"/>
+                        <Label Text="OBJETIVO" Grid.Column="12" Style="{StaticResource cellNumerica}"/>
+                        <Label Text="OBJ.DISP" Grid.Column="13" Style="{StaticResource cellNumerica}"/>
+                        <Label Text="REDUÇÃO" Grid.Column="14" Style="{StaticResource cellNumerica}"/>
                     </Grid>
                 </ListView.Header>
 
