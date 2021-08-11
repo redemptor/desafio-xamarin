@@ -43,7 +43,6 @@ namespace TesteXP.ViewModels
 
         private void IniciarTimer() => Device.StartTimer(TimeSpan.FromMilliseconds(100), AtualizarOrdens);
 
-        uint _count;
         private bool AtualizarOrdens()
         {
             var retornoOrdens = ServicoDeHistorico.ObterOrdens();
