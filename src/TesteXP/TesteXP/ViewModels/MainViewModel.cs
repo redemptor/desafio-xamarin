@@ -51,6 +51,7 @@ namespace TesteXP.ViewModels
             // TODO: melhorar esse ponto para evitar multiplas notificações para a view
             foreach (var ordem in retornoOrdens)
             {
+                Ordens.Remove(ordem);
                 Ordens.Insert(0, ordem);
             }
 

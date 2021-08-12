@@ -30,42 +30,64 @@ namespace TesteXP.Services
 
         public IEnumerable<Ordem> ObterOrdens()
         {
-            if (_primeiraConsulta)
-            {
-                _primeiraConsulta = false;
-
-                return _ordens;
-            }
-
             var retorno = new List<Ordem>();
 
-            if (DateTime.Now > _proximoPico)
+            try
             {
-                // colocar logica de pico aqui
-                foreach (var ordem in _ordens.Take(20))
+                if (_primeiraConsulta)
                 {
-                    _ordens.Insert(0, ordem);
-                    retorno.Insert(0, ordem);
+                    _primeiraConsulta = false;
+
+                    return _ordens;
                 }
 
-                _proximoPico = DateTime.Now.AddSeconds(_random.Next(30, 60));
+                if (DateTime.Now > _proximoPico)
+                {
+                    SimularPicoAtualizacoes(retorno);
+                }
+                else
+                {
+                    SimularNovoItem(retorno);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                var ordem = MontarOrdemMock();
-
-                _ordens.Insert(0, ordem);
-                retorno.Insert(0, ordem);
+                // TODO: Avaliar tratativa
             }
 
             return retorno;
         }
 
+        private void SimularNovoItem(List<Ordem> retorno)
+        {
+            var ordem = MontarOrdemMock();
+
+            _ordens.Insert(0, ordem);
+            retorno.Insert(0, ordem);
+        }
+
+        private void SimularPicoAtualizacoes(List<Ordem> retorno)
+        {
+            var ordensAtualizar = _ordens.OrderBy(x => _random.Next()).Take(10).ToArray();
+
+            foreach (var ordem in ordensAtualizar)
+            {
+                AtualizarOrdemMock(ordem);
+
+                _ordens.Remove(ordem);
+                retorno.Insert(0, ordem);
+            }
+
+            _ordens.InsertRange(0, retorno);
+
+            _proximoPico = DateTime.Now.AddSeconds(_random.Next(5, 30));
+        }
+
         private void AplicarCargaInicial()
         {
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 15; i++)
             {
-                _ordens.Add(MontarOrdemMock());
+                _ordens.Insert(0, MontarOrdemMock());
             }
         }
 
