@@ -38,10 +38,11 @@ namespace TesteXP.ViewModels
         {
             Ordens = new ObservableCollection<Ordem>();
 
+            AtualizarOrdens();
             IniciarTimer();
         }
 
-        private void IniciarTimer() => Device.StartTimer(TimeSpan.FromMilliseconds(100), AtualizarOrdens);
+        private void IniciarTimer() => Device.StartTimer(TimeSpan.FromMilliseconds(5000), AtualizarOrdens);
 
         private bool AtualizarOrdens()
         {

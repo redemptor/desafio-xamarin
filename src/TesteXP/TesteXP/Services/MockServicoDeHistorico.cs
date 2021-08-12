@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TesteXP.Enums;
@@ -29,24 +30,32 @@ namespace TesteXP.Services
 
         public IEnumerable<Ordem> ObterOrdens()
         {
+            if (_primeiraConsulta)
+            {
+                _primeiraConsulta = false;
+
+                return _ordens;
+            }
+
             var retorno = new List<Ordem>();
 
             if (DateTime.Now > _proximoPico)
             {
                 // colocar logica de pico aqui
+                foreach (var ordem in _ordens.Take(20))
+                {
+                    _ordens.Insert(0, ordem);
+                    retorno.Insert(0, ordem);
+                }
+
                 _proximoPico = DateTime.Now.AddSeconds(_random.Next(30, 60));
             }
             else
             {
-                retorno.Add(MontarOrdemMock());
-            }
+                var ordem = MontarOrdemMock();
 
-            _ordens.AddRange(retorno);
-
-            if (_primeiraConsulta)
-            {
-                retorno = _ordens;
-                _primeiraConsulta = false;
+                _ordens.Insert(0, ordem);
+                retorno.Insert(0, ordem);
             }
 
             return retorno;
