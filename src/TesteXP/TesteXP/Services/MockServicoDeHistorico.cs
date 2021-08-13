@@ -57,7 +57,7 @@ namespace TesteXP.Services
                 // TODO: Avaliar tratativa
             }
 
-            return retorno.OrderByDescending(x => x.DataHora);
+            return retorno.OrderByDescending(x => x.DataHora).ThenByDescending(x => x.Id);
         }
 
         private void SimularNovoItem(List<Ordem> retorno)
@@ -84,7 +84,9 @@ namespace TesteXP.Services
 
         private void AplicarCargaInicial()
         {
-            for (int i = 0; i < 15; i++)
+            var totalCargaInicial = 20;
+
+            for (int i = 0; i < totalCargaInicial; i++)
             {
                 _ordens.Add(MontarOrdemMock());
             }
