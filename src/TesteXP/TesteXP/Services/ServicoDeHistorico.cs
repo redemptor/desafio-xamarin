@@ -8,7 +8,7 @@ using TesteXP.Models;
 
 namespace TesteXP.Services
 {
-    public class MockServicoDeHistorico : IServicoDeHistorico
+    public class ServicoDeHistorico : IServicoDeHistorico
     {
         private readonly List<Ordem> _ordens;
 
@@ -23,7 +23,7 @@ namespace TesteXP.Services
         private int _quantidadeItensPico = 10;
         private DateTime _proximoPico;
 
-        public MockServicoDeHistorico()
+        public ServicoDeHistorico()
         {
             _ordens = new List<Ordem>();
             _random = new Random();
@@ -42,6 +42,8 @@ namespace TesteXP.Services
                     retorno = _ordens;
 
                     _primeiraConsulta = false;
+
+                    DefinirProximoPico();
                 }
                 else if (DateTime.Now > _proximoPico)
                 {
@@ -79,6 +81,11 @@ namespace TesteXP.Services
                 retorno.Add(ordem);
             }
 
+            DefinirProximoPico();
+        }
+
+        private void DefinirProximoPico()
+        {
             _proximoPico = DateTime.Now.AddSeconds(_random.Next(_intervaloPicoMin, _intervaloPicoMax));
         }
 
