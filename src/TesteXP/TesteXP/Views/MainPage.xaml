@@ -4,9 +4,13 @@
              x:Class="TesteXP.Views.MainPage"
              BackgroundColor="#1A202E" NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="White"/>
+        </Style>
+
         <Style x:Key="cellString" TargetType="Label">
             <Setter Property="FontSize" Value="9"/>
-            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="TextColor" Value="WhiteSmoke"/>
         </Style>
 
         <Style x:Key="cellNumerica" TargetType="Label" BasedOn="{StaticResource cellString}">
@@ -19,25 +23,45 @@
             <Setter Property="Padding" Value="5"/>
             <Setter Property="ColumnSpacing" Value="2"/>
         </Style>
+
+        <Style x:Key="rowTitulo" TargetType="Grid" BasedOn="{StaticResource rowGrid}">
+            <Setter Property="Padding">
+                <Setter.Value>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="WPF" Value="15,5,25,5"/>
+                    </OnPlatform>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="lista" TargetType="ListView">
+            <Setter Property="VerticalScrollBarVisibility">
+                <Setter.Value>
+                    <OnPlatform x:TypeArguments="ScrollBarVisibility">
+                        <On Platform="WPF" Value="Always"/>
+                    </OnPlatform>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </ContentPage.Resources>
     
     <ContentPage.Content>
         <Grid RowDefinitions="40,35,*" RowSpacing="1">
             <StackLayout Orientation="Horizontal" Grid.Row="0" BackgroundColor="#293241" Padding="15,0">
-                <Label Text="Histórico" VerticalTextAlignment="Center" FontSize="Small"/>
+                <Label Text="Histórico" VerticalOptions="Center" FontSize="Small"/>
             </StackLayout>
 
             <Grid ColumnDefinitions="auto,*,auto,auto" Grid.Row="1" Padding="15,0" BackgroundColor="#293241">
-                <Label Text="{StaticResource chevron-down}" VerticalTextAlignment="Center" FontSize="13" FontFamily="FontAwesomeSolid" Grid.Column="0"/>
-                <Label Text="ORDENS EM ABERTO" VerticalTextAlignment="Center" FontSize="13" Grid.Column="1"/>
+                <Label Text="{StaticResource chevron-down}" VerticalOptions="Center" FontSize="12" FontFamily="FontAwesomeSolid" Grid.Column="0"/>
+                <Label Text="ORDENS EM ABERTO" VerticalOptions="Center" FontSize="12" Grid.Column="1" />
 
-                <Label Text="{Binding QuantidadeTotal, StringFormat='TOTAL QUANTIDADE: {0}'}" Grid.Column="2" VerticalTextAlignment="Center" FontSize="10" />
-                <Label Text="{Binding QuantidadeDisponivelTotal, StringFormat='TOTAL DISPONIVEL: {0}'}" Grid.Column="3" VerticalTextAlignment="Center" FontSize="10" Margin="5,0"/>
+                <Label Text="{Binding QuantidadeTotal, StringFormat='TOTAL QUANTIDADE: {0}'}" Grid.Column="2" VerticalOptions="Center" FontSize="10" />
+                <Label Text="{Binding QuantidadeDisponivelTotal, StringFormat='TOTAL DISPONIVEL: {0}'}" Grid.Column="3" VerticalOptions="Center" FontSize="10" Margin="5,0"/>
             </Grid>
 
-            <ListView Grid.Row="2" ItemsSource="{Binding Ordens}">
+            <ListView Grid.Row="2" ItemsSource="{Binding Ordens}" Style="{StaticResource lista}">
                 <ListView.Header>
-                    <Grid BackgroundColor="#1A2030" Style="{StaticResource rowGrid}">
+                    <Grid BackgroundColor="#1A2030" Style="{StaticResource rowTitulo}">
                         <Label Text="DATA E HORA" Grid.Column="0" Style="{StaticResource cellString}"/>
                         <Label Text="ASSESSOR" Grid.Column="1" Style="{StaticResource cellString}"/>
                         <Label Text="CONTA" Grid.Column="2" Style="{StaticResource cellString}"/>
