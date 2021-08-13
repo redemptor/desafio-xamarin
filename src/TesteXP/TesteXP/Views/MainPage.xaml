@@ -28,6 +28,7 @@
             <Setter Property="Padding">
                 <Setter.Value>
                     <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="UWP" Value="5"/>
                         <On Platform="WPF" Value="15,5,25,5"/>
                     </OnPlatform>
                 </Setter.Value>
@@ -38,13 +39,14 @@
             <Setter Property="VerticalScrollBarVisibility">
                 <Setter.Value>
                     <OnPlatform x:TypeArguments="ScrollBarVisibility">
+                        <On Platform="UWP" Value="Default"/>
                         <On Platform="WPF" Value="Always"/>
                     </OnPlatform>
                 </Setter.Value>
             </Setter>
         </Style>
     </ContentPage.Resources>
-    
+
     <ContentPage.Content>
         <Grid RowDefinitions="40,35,*" RowSpacing="1">
             <StackLayout Orientation="Horizontal" Grid.Row="0" BackgroundColor="#293241" Padding="15,0">
@@ -85,7 +87,7 @@
                         <ViewCell>
                             <Grid BackgroundColor="#232939" Style="{StaticResource rowGrid}">
                                 <Label Text="{Binding DataHora}" Grid.Column="0" Style="{StaticResource cellString}"/>
-                                <Label Text="{Binding Assessor}" Grid.Column="1" Style="{StaticResource cellString}"/>
+                                <Label Text="{Binding Assessor, TargetNullValue='-'}" Grid.Column="1" Style="{StaticResource cellString}"/>
                                 <Label Text="{Binding Conta}" Grid.Column="2" Style="{StaticResource cellString}"/>
                                 <Label Text="{Binding Ativo}" Grid.Column="3" Style="{StaticResource cellString}"/>
                                 <Label Text="{Binding Tipo, Converter={StaticResource cellTipoConverter}}" Grid.Column="4" Style="{StaticResource cellString}"/>
