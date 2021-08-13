@@ -6,6 +6,7 @@
     <ContentPage.Resources>
         <Style x:Key="cellString" TargetType="Label">
             <Setter Property="FontSize" Value="9"/>
+            <Setter Property="TextColor" Value="White"/>
         </Style>
 
         <Style x:Key="cellNumerica" TargetType="Label" BasedOn="{StaticResource cellString}">
