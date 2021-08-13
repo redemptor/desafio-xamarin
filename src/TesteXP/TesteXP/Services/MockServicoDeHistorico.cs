@@ -18,6 +18,9 @@ namespace TesteXP.Services
 
         private bool _primeiraConsulta = true;
 
+        private int _intervaloPicoMin = 5;
+        private int _intervaloPicoMax = 30;
+        private int _quantidadeItensPico = 10;
         private DateTime _proximoPico;
 
         public MockServicoDeHistorico()
@@ -36,12 +39,11 @@ namespace TesteXP.Services
             {
                 if (_primeiraConsulta)
                 {
+                    retorno = _ordens;
+
                     _primeiraConsulta = false;
-
-                    return _ordens;
                 }
-
-                if (DateTime.Now > _proximoPico)
+                else if (DateTime.Now > _proximoPico)
                 {
                     SimularPicoAtualizacoes(retorno);
                 }
@@ -55,39 +57,36 @@ namespace TesteXP.Services
                 // TODO: Avaliar tratativa
             }
 
-            return retorno;
+            return retorno.OrderByDescending(x => x.DataHora);
         }
 
         private void SimularNovoItem(List<Ordem> retorno)
         {
             var ordem = MontarOrdemMock();
 
-            _ordens.Insert(0, ordem);
-            retorno.Insert(0, ordem);
+            _ordens.Add(ordem);
+            retorno.Add(ordem);
         }
 
         private void SimularPicoAtualizacoes(List<Ordem> retorno)
         {
-            var ordensAtualizar = _ordens.OrderBy(x => _random.Next()).Take(10).ToArray();
+            var ordensAtualizar = _ordens.OrderBy(x => _random.Next()).Take(_quantidadeItensPico);
 
             foreach (var ordem in ordensAtualizar)
             {
                 AtualizarOrdemMock(ordem);
 
-                _ordens.Remove(ordem);
-                retorno.Insert(0, ordem);
+                retorno.Add(ordem);
             }
 
-            _ordens.InsertRange(0, retorno);
-
-            _proximoPico = DateTime.Now.AddSeconds(_random.Next(5, 30));
+            _proximoPico = DateTime.Now.AddSeconds(_random.Next(_intervaloPicoMin, _intervaloPicoMax));
         }
 
         private void AplicarCargaInicial()
         {
             for (int i = 0; i < 15; i++)
             {
-                _ordens.Insert(0, MontarOrdemMock());
+                _ordens.Add(MontarOrdemMock());
             }
         }
 

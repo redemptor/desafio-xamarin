@@ -42,7 +42,7 @@ namespace TesteXP.ViewModels
             IniciarTimer();
         }
 
-        private void IniciarTimer() => Device.StartTimer(TimeSpan.FromMilliseconds(5000), AtualizarOrdens);
+        private void IniciarTimer() => Device.StartTimer(TimeSpan.FromMilliseconds(3000), AtualizarOrdens);
 
         private bool AtualizarOrdens()
         {
