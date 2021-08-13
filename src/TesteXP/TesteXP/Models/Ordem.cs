@@ -10,7 +10,7 @@ namespace TesteXP.Models
         public Ordem(
             ulong id,
             DateTime dataHora,
-            Acessor assessor,
+            Assessor assessor,
             uint conta,
             string ativo,
             EnumTipo tipo,
@@ -45,7 +45,7 @@ namespace TesteXP.Models
 
         public ulong Id { get; set; }
         public DateTime DataHora { get; set; }
-        public Acessor Assessor { get; set; }
+        public Assessor Assessor { get; set; }
         public uint Conta { get; set; }
         public string Ativo { get; set; }
         public EnumTipo Tipo { get; set; }

@@ -101,10 +101,15 @@ namespace TesteXP.Services
             var valor = _random.Next(1, 130);
             var objetivo = (decimal)(valor * (1 + _random.NextDouble()));
 
+            var codigoAssessor = _random.Next(-5, 10);
+            var assessor = codigoAssessor > 0
+                ? new Assessor((uint)codigoAssessor, $"Assessor_{codigoAssessor}")
+                : null;
+
             var ordem = new Ordem(
                 ++_idAtual,
                 DateTime.Now,
-                assessor: null,
+                assessor,
                 conta,
                 $"ATIVO_{_idAtual}",
                 tipo,
