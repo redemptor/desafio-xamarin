@@ -6,6 +6,7 @@
     <Application.Resources>
 
         <!--Converters-->
+        <converters:CellEmptyConverter x:Key="cellEmptyConverter"/>
         <converters:CellNumericaConverter x:Key="cellNumericaConverter"/>
         <converters:CellPercentualConverter x:Key="cellPercentualConverter"/>
         <converters:CellTipoConverter x:Key="cellTipoConverter"/>
