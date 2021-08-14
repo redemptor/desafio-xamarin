@@ -10,6 +10,7 @@ namespace TesteXP.ViewModels
     public class MainViewModel : BaseViewModel
     {
         private IServicoDeHistorico ServicoDeHistorico => DependencyService.Get<IServicoDeHistorico>();
+        private TimeSpan _intervaloDeAtualizacao = TimeSpan.FromMilliseconds(50);
 
         private ObservableCollection<Ordem> _ordens;
         public ObservableCollection<Ordem> Ordens
@@ -40,7 +41,10 @@ namespace TesteXP.ViewModels
             IniciarTimer();
         }
 
-        private void IniciarTimer() => Device.StartTimer(TimeSpan.FromMilliseconds(1000), AtualizarOrdens);
+        private void IniciarTimer()
+        {
+            Device.StartTimer(_intervaloDeAtualizacao, AtualizarOrdens);
+        }
 
         private bool AtualizarOrdens()
         {
