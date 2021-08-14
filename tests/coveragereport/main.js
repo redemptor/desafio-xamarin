@@ -224,16 +224,18 @@ var assemblies = [
   {
     "name": "TesteXP",
     "classes": [
-      { "name": "TesteXP.App", "rp": "TesteXP_App.html", "cl": 0, "ucl": 14, "cal": 14, "tl": 59, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 10, "lch": [], "bch": [], "hc": [] },
+      { "name": "TesteXP.App", "rp": "TesteXP_App.html", "cl": 0, "ucl": 20, "cal": 20, "tl": 65, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 10, "lch": [], "bch": [], "hc": [] },
       { "name": "TesteXP.Converters.CellNumericaConverter", "rp": "TesteXP_CellNumericaConverter.html", "cl": 10, "ucl": 0, "cal": 10, "tl": 23, "ct": "LineCoverage", "mc": "-", "cb": 5, "tb": 6, "lch": [], "bch": [], "hc": [] },
       { "name": "TesteXP.Converters.CellPercentualConverter", "rp": "TesteXP_CellPercentualConverter.html", "cl": 7, "ucl": 0, "cal": 7, "tl": 21, "ct": "LineCoverage", "mc": "-", "cb": 4, "tb": 4, "lch": [], "bch": [], "hc": [] },
       { "name": "TesteXP.Converters.CellTipoConverter", "rp": "TesteXP_CellTipoConverter.html", "cl": 7, "ucl": 0, "cal": 7, "tl": 22, "ct": "LineCoverage", "mc": "-", "cb": 2, "tb": 2, "lch": [], "bch": [], "hc": [] },
       { "name": "TesteXP.Models.Assessor", "rp": "TesteXP_Assessor.html", "cl": 10, "ucl": 0, "cal": 10, "tl": 19, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "TesteXP.Models.Ordem", "rp": "TesteXP_Ordem.html", "cl": 51, "ucl": 1, "cal": 52, "tl": 63, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
-      { "name": "TesteXP.Services.ServicoDeHistorico", "rp": "TesteXP_ServicoDeHistorico.html", "cl": 96, "ucl": 0, "cal": 96, "tl": 149, "ct": "LineCoverage", "mc": "-", "cb": 10, "tb": 10, "lch": [], "bch": [], "hc": [] },
+      { "name": "TesteXP.Services.ServicoDeHistorico", "rp": "TesteXP_ServicoDeHistorico.html", "cl": 99, "ucl": 0, "cal": 99, "tl": 154, "ct": "LineCoverage", "mc": "-", "cb": 10, "tb": 10, "lch": [], "bch": [], "hc": [] },
+      { "name": "TesteXP.Templates.OrdemViewCell", "rp": "TesteXP_OrdemViewCell.html", "cl": 0, "ucl": 5, "cal": 5, "tl": 44, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 10, "lch": [], "bch": [], "hc": [] },
+      { "name": "TesteXP.Templates.OrdensHeaderView", "rp": "TesteXP_OrdensHeaderView.html", "cl": 0, "ucl": 5, "cal": 5, "tl": 44, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 10, "lch": [], "bch": [], "hc": [] },
       { "name": "TesteXP.ViewModels.BaseViewModel", "rp": "TesteXP_BaseViewModel.html", "cl": 15, "ucl": 7, "cal": 22, "tl": 52, "ct": "LineCoverage", "mc": "-", "cb": 3, "tb": 6, "lch": [], "bch": [], "hc": [] },
-      { "name": "TesteXP.ViewModels.MainViewModel", "rp": "TesteXP_MainViewModel.html", "cl": 25, "ucl": 0, "cal": 25, "tl": 66, "ct": "LineCoverage", "mc": "-", "cb": 2, "tb": 2, "lch": [], "bch": [], "hc": [] },
-      { "name": "TesteXP.Views.MainPage", "rp": "TesteXP_MainPage.html", "cl": 0, "ucl": 7, "cal": 7, "tl": 46, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 10, "lch": [], "bch": [], "hc": [] },
+      { "name": "TesteXP.ViewModels.MainViewModel", "rp": "TesteXP_MainViewModel.html", "cl": 27, "ucl": 0, "cal": 27, "tl": 68, "ct": "LineCoverage", "mc": "-", "cb": 2, "tb": 2, "lch": [], "bch": [], "hc": [] },
+      { "name": "TesteXP.Views.MainPage", "rp": "TesteXP_MainPage.html", "cl": 0, "ucl": 6, "cal": 6, "tl": 46, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 10, "lch": [], "bch": [], "hc": [] },
     ]},
 ];
 
