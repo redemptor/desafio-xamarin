@@ -6,11 +6,9 @@
     <Application.Resources>
 
         <!--Converters-->
-        <converters:CellEmptyConverter x:Key="cellEmptyConverter"/>
         <converters:CellNumericaConverter x:Key="cellNumericaConverter"/>
         <converters:CellPercentualConverter x:Key="cellPercentualConverter"/>
         <converters:CellTipoConverter x:Key="cellTipoConverter"/>
-
 
         <!-- Font Icon-->
             <x:String x:Key="chevron-down">&#xf078;</x:String>
