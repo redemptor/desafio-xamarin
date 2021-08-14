@@ -48,7 +48,7 @@ namespace TesteXP.ViewModels
 
         private bool AtualizarOrdens()
         {
-            var retornoOrdens = ServicoDeHistorico.ObterOrdens();
+            var retornoOrdens = ServicoDeHistorico.ObterOrdensNaoProcessadas();
 
             // TODO: melhorar esse ponto para evitar multiplas notificações para a view
             foreach (var ordem in retornoOrdens)

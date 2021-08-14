@@ -32,7 +32,7 @@ namespace TesteXP.Services
             AplicarCargaInicial();
         }
 
-        public IEnumerable<Ordem> ObterOrdens()
+        public IEnumerable<Ordem> ObterOrdensNaoProcessadas()
         {
             var retorno = new List<Ordem>();
 
@@ -54,6 +54,11 @@ namespace TesteXP.Services
             }
 
             return retorno.OrderByDescending(x => x.DataHora).ThenByDescending(x => x.Id);
+        }
+
+        public IEnumerable<Ordem> ObterTodasAsOrdens()
+        {
+            return _ordens.OrderByDescending(x => x.DataHora).ThenByDescending(x => x.Id);
         }
 
         private void SimularNovoItem(List<Ordem> retorno)

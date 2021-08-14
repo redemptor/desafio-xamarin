@@ -19,7 +19,7 @@ namespace TesteXP.Test.Mocks
             _ordens = new List<Ordem>();
         }
 
-        public IEnumerable<Ordem> ObterOrdens()
+        public IEnumerable<Ordem> ObterOrdensNaoProcessadas()
         {
             var ordem = new Ordem(
                 ++_id,
@@ -42,6 +42,11 @@ namespace TesteXP.Test.Mocks
             _ordens.Add(ordem);
 
             return new List<Ordem> { ordem };
+        }
+
+        public IEnumerable<Ordem> ObterTodasAsOrdens()
+        {
+            return _ordens;
         }
     }
 }
