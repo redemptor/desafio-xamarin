@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TesteXP.Templates.OrdemViewCell">
+    <Grid BackgroundColor="#232939" Style="{StaticResource rowGrid}">
+        <Label Text="{Binding DataHora}" Grid.Column="0" Style="{StaticResource cellString}"/>
+        <Label Text="{Binding Assessor, TargetNullValue='-'}" Grid.Column="1" Style="{StaticResource cellString}"/>
+        <Label Text="{Binding Conta}" Grid.Column="2" Style="{StaticResource cellString}"/>
+        <Label Text="{Binding Ativo}" Grid.Column="3" Style="{StaticResource cellString}"/>
+        <Label Text="{Binding Tipo, Converter={StaticResource cellTipoConverter}}" Grid.Column="4" Style="{StaticResource cellString}"/>
+        <Label Text="{Binding Quantidade}" Grid.Column="5" Style="{StaticResource cellNumerica}"/>
+        <Label Text="{Binding QuantidadeAparente, Converter={StaticResource cellNumericaConverter}}" Grid.Column="6" Style="{StaticResource cellNumerica}"/>
+        <Label Text="{Binding QuantidadeDisponivel, Converter={StaticResource cellNumericaConverter}}" Grid.Column="7" Style="{StaticResource cellNumerica}"/>
+        <Label Text="{Binding QuantidadeCancelada, Converter={StaticResource cellNumericaConverter}}" Grid.Column="8" Style="{StaticResource cellNumerica}"/>
+        <Label Text="{Binding QuantidadeExecutada, Converter={StaticResource cellNumericaConverter}}" Grid.Column="9" Style="{StaticResource cellNumerica}"/>
+        <Label Text="{Binding Valor, StringFormat='{0:F2}'}" Grid.Column="10" Style="{StaticResource cellNumerica}"/>
+        <Label Text="{Binding ValorDisparo, StringFormat='{0:F2}'}" Grid.Column="11" Style="{StaticResource cellNumerica}"/>
+        <Label Text="{Binding Objetivo, StringFormat='{0:F2}'}" Grid.Column="12" Style="{StaticResource cellNumerica}"/>
+        <Label Text="{Binding ObjetivoDisparo, StringFormat='{0:F2}'}" Grid.Column="13" Style="{StaticResource cellNumerica}"/>
+        <Label Text="{Binding Reducao, Converter={StaticResource cellPercentualConverter}}" Grid.Column="14" Style="{StaticResource cellNumerica}"/>
+    </Grid>
+</ViewCell>

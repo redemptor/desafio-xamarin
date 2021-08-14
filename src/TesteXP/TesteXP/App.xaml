@@ -5,15 +5,61 @@
              x:Class="TesteXP.App">
     <Application.Resources>
 
-        <!--Converters-->
+        <!-- Converters -->
         <converters:CellNumericaConverter x:Key="cellNumericaConverter"/>
         <converters:CellPercentualConverter x:Key="cellPercentualConverter"/>
         <converters:CellTipoConverter x:Key="cellTipoConverter"/>
 
-        <!-- Font Icon-->
-            <x:String x:Key="chevron-down">&#xf078;</x:String>
-            <x:String x:Key="arrow-down">&#xf063;</x:String>
+        <!-- Font Icon -->
+        <x:String x:Key="chevron-down">&#xf078;</x:String>
+        <x:String x:Key="arrow-down">&#xf063;</x:String>
 
+        <!-- Colors -->
+        <Color x:Key="corTituloBackground">#293241</Color>
+        <Color x:Key="corPaginaBackground">#1A202E</Color>
+        
+        <!-- Style -->
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="White"/>
+        </Style>
+
+        <Style x:Key="cellString" TargetType="Label">
+            <Setter Property="FontSize" Value="9"/>
+            <Setter Property="TextColor" Value="WhiteSmoke"/>
+        </Style>
+
+        <Style x:Key="cellNumerica" TargetType="Label" BasedOn="{StaticResource cellString}">
+            <Setter Property="HorizontalTextAlignment" Value="End"/>
+        </Style>
+
+        <Style x:Key="rowGrid" TargetType="Grid">
+            <Setter Property="ColumnDefinitions" Value="2*,*,*,*,40,*,*,*,*,*,*,*,*,*,*"/>
+            <Setter Property="Margin" Value="1"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="ColumnSpacing" Value="2"/>
+        </Style>
+
+        <Style x:Key="rowTitulo" TargetType="Grid" BasedOn="{StaticResource rowGrid}">
+            <Setter Property="Padding">
+                <Setter.Value>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="UWP" Value="5"/>
+                        <On Platform="WPF" Value="15,5,25,5"/>
+                    </OnPlatform>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="lista" TargetType="ListView">
+            <Setter Property="VerticalScrollBarVisibility">
+                <Setter.Value>
+                    <OnPlatform x:TypeArguments="ScrollBarVisibility">
+                        <On Platform="UWP" Value="Default"/>
+                        <On Platform="WPF" Value="Always"/>
+                    </OnPlatform>
+                </Setter.Value>
+            </Setter>
+        </Style>
 
     </Application.Resources>
 </Application>

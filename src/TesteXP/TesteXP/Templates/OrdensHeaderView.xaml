@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TesteXP.Templates.OrdensHeaderView">
+  <ContentView.Content>
+        <Grid BackgroundColor="#1A2030" Style="{StaticResource rowTitulo}">
+            <Label Text="DATA E HORA" Grid.Column="0" Style="{StaticResource cellString}"/>
+            <Label Text="ASSESSOR" Grid.Column="1" Style="{StaticResource cellString}"/>
+            <Label Text="CONTA" Grid.Column="2" Style="{StaticResource cellString}"/>
+            <Label Text="ATIVO" Grid.Column="3" Style="{StaticResource cellString}"/>
+            <Label Text="TIPO" Grid.Column="4" Style="{StaticResource cellString}"/>
+            <Label Text="QTD" Grid.Column="5" Style="{StaticResource cellNumerica}"/>
+            <Label Text="QTD. APARENTE" Grid.Column="6" Style="{StaticResource cellNumerica}"/>
+            <Label Text="QTD.DISP" Grid.Column="7" Style="{StaticResource cellNumerica}"/>
+            <Label Text="QTD. CANCEL" Grid.Column="8" Style="{StaticResource cellNumerica}"/>
+            <Label Text="QTD. EXEC" Grid.Column="9" Style="{StaticResource cellNumerica}"/>
+            <Label Text="VALOR" Grid.Column="10" Style="{StaticResource cellNumerica}"/>
+            <Label Text="VALOR DISP" Grid.Column="11" Style="{StaticResource cellNumerica}"/>
+            <Label Text="OBJETIVO" Grid.Column="12" Style="{StaticResource cellNumerica}"/>
+            <Label Text="OBJ.DISP" Grid.Column="13" Style="{StaticResource cellNumerica}"/>
+            <Label Text="REDUÇÃO" Grid.Column="14" Style="{StaticResource cellNumerica}"/>
+        </Grid>
+    </ContentView.Content>
+</ContentView>
