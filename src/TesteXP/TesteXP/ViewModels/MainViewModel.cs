@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using TesteXP.Models;
 using TesteXP.Services;
 using Xamarin.Forms;
@@ -38,11 +36,11 @@ namespace TesteXP.ViewModels
         {
             Ordens = new ObservableCollection<Ordem>();
 
-            AtualizarOrdens();
+            //AtualizarOrdens();
             IniciarTimer();
         }
 
-        private void IniciarTimer() => Device.StartTimer(TimeSpan.FromMilliseconds(3000), AtualizarOrdens);
+        private void IniciarTimer() => Device.StartTimer(TimeSpan.FromMilliseconds(1000), AtualizarOrdens);
 
         private bool AtualizarOrdens()
         {
@@ -52,8 +50,10 @@ namespace TesteXP.ViewModels
             foreach (var ordem in retornoOrdens)
             {
                 Ordens.Remove(ordem);
-                Ordens.Insert(0, ordem);
+                Ordens.Add(ordem);
             }
+
+            //Ordens.Reverse();
 
             QuantidadeTotal = Ordens.Sum(x => x.Quantidade);
             QuantidadeDisponivelTotal = Ordens.Sum(x => x.QuantidadeDisponivel);
