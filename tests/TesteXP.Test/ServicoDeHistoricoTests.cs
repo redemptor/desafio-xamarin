@@ -30,5 +30,15 @@ namespace TesteXP.Test
 
             Assert.True(retorno.Count() == 1, "Esperado apenas um item.");
         }
+
+        [Fact]
+        public void DeveRetornarItensAtualizados()
+        {
+            var listaInicial = _servicoDeHistorico.ObterOrdens().Select(x => x.Id);
+            _servicoDeHistorico.ProximoPico = DateTime.Now;
+            var listaFinal = _servicoDeHistorico.ObterOrdens().Select(x => x.Id);
+
+            Assert.True(!listaInicial.SequenceEqual(listaFinal), "Esprado que lista tenha sequencia diferente.");
+        }
     }
 }
