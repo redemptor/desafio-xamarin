@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Threading;
 using TesteXP.Services;
 using TesteXP.Views;
 using Xamarin.Forms;
@@ -13,15 +14,13 @@ namespace TesteXP
         {
             InitializeComponent();
 
-            DependencyService.Register<MockServicoDeHistorico>();
+            DependencyService.Register<ServicoDeHistorico>();
             MainPage = new MainPage();
         }
 
         protected override void OnStart()
         {
-            CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator = ",";
-            CultureInfo.CurrentUICulture.DateTimeFormat.ShortDatePattern = "dd/MM/yyyy";
-            CultureInfo.CurrentUICulture.DateTimeFormat.LongTimePattern = "H:mm:ss";
+            DefinirCultura();
         }
 
         protected override void OnSleep()
@@ -30,6 +29,13 @@ namespace TesteXP
 
         protected override void OnResume()
         {
+        }
+
+        private void DefinirCultura()
+        {
+            CultureInfo cultura = new CultureInfo("pt-BR");
+            Thread.CurrentThread.CurrentCulture = cultura;
+            Thread.CurrentThread.CurrentUICulture = cultura;
         }
     }
 }
