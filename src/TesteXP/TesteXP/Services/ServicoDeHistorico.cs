@@ -21,7 +21,8 @@ namespace TesteXP.Services
         private int _intervaloPicoMin = 5;
         private int _intervaloPicoMax = 30;
         private int _quantidadeItensPico = 10;
-        private DateTime _proximoPico;
+
+        public DateTime ProximoPico { get; set; }
 
         public ServicoDeHistorico()
         {
@@ -35,28 +36,21 @@ namespace TesteXP.Services
         {
             var retorno = new List<Ordem>();
 
-            try
+            if (_primeiraConsulta)
             {
-                if (_primeiraConsulta)
-                {
-                    retorno = _ordens;
+                retorno = _ordens;
 
-                    _primeiraConsulta = false;
+                _primeiraConsulta = false;
 
-                    DefinirProximoPico();
-                }
-                else if (DateTime.Now > _proximoPico)
-                {
-                    SimularPicoAtualizacoes(retorno);
-                }
-                else
-                {
-                    SimularNovoItem(retorno);
-                }
+                DefinirProximoPico();
             }
-            catch (Exception ex)
+            else if (DateTime.Now > ProximoPico)
             {
-                // TODO: Avaliar tratativa
+                SimularPicoAtualizacoes(retorno);
+            }
+            else
+            {
+                SimularNovoItem(retorno);
             }
 
             return retorno.OrderByDescending(x => x.DataHora).ThenByDescending(x => x.Id);
@@ -86,7 +80,7 @@ namespace TesteXP.Services
 
         private void DefinirProximoPico()
         {
-            _proximoPico = DateTime.Now.AddSeconds(_random.Next(_intervaloPicoMin, _intervaloPicoMax));
+            ProximoPico = DateTime.Now.AddSeconds(_random.Next(_intervaloPicoMin, _intervaloPicoMax));
         }
 
         private void AplicarCargaInicial()
