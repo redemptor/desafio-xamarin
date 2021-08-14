@@ -50,7 +50,7 @@ namespace TesteXP.ViewModels
         {
             var retornoOrdens = ServicoDeHistorico.ObterOrdensNaoProcessadas();
 
-            // TODO: melhorar esse ponto para evitar multiplas notificações para a view
+            // TODO: melhorar esse ponto para mante itens no topo novamente com melhora no render
             foreach (var ordem in retornoOrdens)
             {
                 Ordens.Remove(ordem);
